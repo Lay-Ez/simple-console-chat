@@ -31,6 +31,8 @@ public class Servlet extends Thread implements Observer {
             DataBase.getInstance().registerObserver(this);
             printLastTenMessages();
             printAllCommands();
+
+            //main loop
             while (!socket.isClosed()) {
 
                 String message = reader.readLine();
@@ -45,6 +47,8 @@ public class Servlet extends Thread implements Observer {
                     continue;
                 }
 
+                // you may add your commands here
+
                 new Thread(() -> DataBase.getInstance().
                         addMessageToList(nickName + MESSAGE_DELIMITER + message)).start();
             }
@@ -52,7 +56,6 @@ public class Servlet extends Thread implements Observer {
             terminateClient();
 
         } catch (IOException e) {
-//            System.out.println("I/O error " + e.getMessage());
             terminateClient();
         }
     }

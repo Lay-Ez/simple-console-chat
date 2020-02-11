@@ -24,6 +24,7 @@ public class Main {
             }
         }
         System.out.println("Starting the server with port number " + portNumber);
+        System.out.println("Enter 'shutdown' to stop the server (or just exit the console, who cares)");
 
         try (ServerSocket serverSocket = new ServerSocket(portNumber)) {
 
@@ -60,6 +61,8 @@ class CommandListener extends Thread {
                 System.out.println("Stopping the server");
                 System.exit(0);
             }
+            // You might want to add more commands for the server
+            // if so, place them here
         }
     }
 }
